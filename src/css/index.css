@@ -288,10 +288,10 @@ img {
 	top: 0;
 	left: 0;
 }
-.tasks-Ul li[done] {
+.tasks-Ul li[done='true'] {
 	text-decoration: line-through;
 }
-.tasks-Ul li[done]::after {
+.tasks-Ul li[done='true']::after {
 	position: absolute;
 	content: '';
 	display: block;
