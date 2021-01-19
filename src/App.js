@@ -29,7 +29,7 @@ function App() {
 						<h2>Use our Awsome App to free some of your brain memory</h2>
 					</section>
 					<div class='intruduction card'>
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt debitis reiciendis ducimus iusto ipsam? Fugit
+						Test Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt debitis reiciendis ducimus iusto ipsam? Fugit
 						commodi quae dicta totam. Cumque.
 					</div>
 				</div>
