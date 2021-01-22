@@ -1,14 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
-function Task(props) {
+const  Task=React.memo(({ task })=> {
+	useEffect(() => {
+		console.log('[Task renders]')
+	})
+	const onDelete = () => {}
 	return (
-		<li done={props.done.toString()}>
-			<button className='btn'>
+		<li done={task.done.toString()}>
+			<button onClick={onDelete} className='btn'>
 				<span className='tooltip'> Delete?</span>
 			</button>
-			{props.taskName}
+			{task.name}
 		</li>
 	)
-}
+})
 
 export default Task
