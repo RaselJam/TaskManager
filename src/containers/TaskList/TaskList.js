@@ -13,22 +13,22 @@ function TaskList(props) {
 	}
 	return (
 		<div className='tasks card '>
-			<h3 className='with-pen my-1 bg-light'>Tasks to Do</h3>
+			<h3 className='with-pen my-1 bg-light'>{props.table.showName}</h3>
 			<ul className='tasks-Ul p-1'>
 				{props.list.map((task) => (
-					<Task task={task} key={task.id} />
+					<Task taskId={task.id} key={task.id} table={props.table} />
 				))}
 			</ul>
 			<Input onSubmit={onAddingTask} />
 		</div>
 	)
 }
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, ownProps) => {
 	return {
 		onAddTask: (name) => {
-			dispatch(actions.addTaks(name))
+			dispatch(actions[ownProps.table].addTasks(name))
 		},
-		// ,
+
 		// onDeleteTask: (id) => {
 		// 	dispatch(actions.deleteTask(id))
 		// },
@@ -37,4 +37,10 @@ const mapDispatchToProps = (dispatch) => {
 		// },
 	}
 }
-export default connect(null, mapDispatchToProps)(TaskList)
+
+const mapStateToProps = (state, ownProps) => {
+	return {
+		list: state[ownProps.table.tableName],
+	}
+}
+export default connect(mapStateToProps, mapDispatchToProps)(TaskList)

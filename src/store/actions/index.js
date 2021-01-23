@@ -1,5 +1,1 @@
-export {
-  addTaks,
-  deleteTask, 
-  toggleDone
-} from './tasks';
+export * as tasksList  from './tasks';
