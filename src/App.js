@@ -8,7 +8,7 @@ function App(props) {
 		<div className='App'>
 			<Header />
 			<section className='main container grid grid-3 bg-thersary'>
-				<TaskList list={props.tasksList} />
+				<TaskList />
 			</section>
 		</div>
 	)

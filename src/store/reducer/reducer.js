@@ -13,9 +13,11 @@ const reducer = (state = initialState, action) => {
 		case actionType.DELETE_TASK:
 			return { ...state, tasksList: state.tasksList.filter((t) => t.id !== action.taskId) }
 		case actionType.TASK_Toggle_DONE:
-			let target = state.tasksList.find((t) => t.id === action.id)
-			target.done = target.done ? false : true
-			return
+			const targetIndex = state.tasksList.findIndex((t) => t.id === action.id)
+			const updatedList = [...state.tasksList]
+			updatedList[targetIndex].done = true
+
+			return { ...state, tasksList: updatedList }
 		default:
 			return state
 	}
