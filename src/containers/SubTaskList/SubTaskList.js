@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react'
-
+import React from 'react'
 import { connect } from 'react-redux'
 import Task from '../TaskList/Task/Task'
 import * as actions from '../../store/actions'
