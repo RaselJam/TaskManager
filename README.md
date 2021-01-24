@@ -9,7 +9,7 @@ A very Simple "Todo list" app, wich will eventually grow to a full practital Tas
 # Installation :
 
 This project has been made by Creat-react-app.
-after cloning , run this code to install all dependencies :
+Run this code to install all dependencies :
 <code> yarn</code>
 or.
 <code> npm i </code>.
