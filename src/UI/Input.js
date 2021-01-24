@@ -3,11 +3,9 @@ import React, { useState } from 'react'
 function Input(props) {
 	const [input, setInput] = useState('')
 	const handleKeypress = (event) => {
-		
 		//it triggers by pressing the enter key
 		let keyCode = event.keyCode || event.which
 		if (keyCode === 13) {
-		
 			handleSubmit()
 		}
 	}
@@ -19,7 +17,7 @@ function Input(props) {
 			<input
 				type='text'
 				onKeyPress={handleKeypress}
-				placeholder='Add new Task'
+				placeholder={props.placeholder}
 				value={input}
 				onChange={(e) => setInput(e.target.value)}
 			/>

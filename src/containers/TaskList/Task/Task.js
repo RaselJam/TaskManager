@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
+import * as actions from '../../../store/actions'
+import { connect } from 'react-redux'
 
 const Task = React.memo((props) => {
-	useEffect(() => {
-		console.log('[Task renders]')
-	})
+
 	const handleDelte = () => {
 		props.onDelete(props.task.id)
 	}
@@ -11,15 +11,27 @@ const Task = React.memo((props) => {
 		console.log('Submit Clecked')
 		props.onSubmit(props.task.id)
 	}
+	const handleSelected = () => {
+		props.onTaskSelect(props.task.id, props.task.name)
+	}
 	return (
 		<li done={props.task.done.toString()}>
 			<button onClick={handleDelte} className='btn'>
 				<span className='tooltip'> Delete?</span>
 			</button>
-			{props.task.name}
+			<p onFocus={handleSelected} onClick={handleSelected}>
+				{props.task.name}
+			</p>
 			<button onClick={handleSubmit} className='doButton'></button>
 		</li>
 	)
 })
 
-export default Task
+const mapDispatchToProps = (dispatch) => {
+	return {
+		onTaskSelect: (id, name) => {
+			dispatch(actions.setCurrentTask(id, name))
+		},
+	}
+}
+export default connect(null, mapDispatchToProps)(Task)

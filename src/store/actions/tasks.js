@@ -16,3 +16,6 @@ export const deleteTask = (id) => {
 export const toggleDone = (id) => {
 	return { type: actionType.TASK_Toggle_DONE, id: id }
 }
+export const setCurrentTask = (id, taskName) => {
+	return { type: actionType.SET_CURRENT_TASK, id: id, taskName: taskName }
+}

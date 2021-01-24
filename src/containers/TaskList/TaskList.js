@@ -5,18 +5,13 @@ import * as actions from '../../store/actions'
 import Input from '../../UI/Input'
 
 function TaskList(props) {
-	useEffect(() => {
-		console.log('[TaskList renders]')
-	})
 	const onAddingTask = (taskName) => {
 		props.onAddTask(taskName)
 	}
 	const handleTaskDone = (id) => {
-		console.log('Toggle task id :', id)
 		props.onTaskToggleDone(id)
 	}
 	const handleDeleteTask = (id) => {
-		console.log('Deleting task id :', id)
 		props.onDeleteTask(id)
 	}
 
@@ -24,14 +19,11 @@ function TaskList(props) {
 		<div className='tasks card '>
 			<h3 className='with-pen my-1 bg-light'>Tasks to Do</h3>
 			<ul className='tasks-Ul p-1'>
-				{
-					(console.log(props.list.map((c) => c.name)),
-					props.list.map((task) => (
-						<Task task={task} key={task.id} onSubmit={handleTaskDone} onDelete={handleDeleteTask} />
-					)))
-				}
+				{props.list.map((task) => (
+					<Task task={task} key={task.id} onSubmit={handleTaskDone} onDelete={handleDeleteTask} />
+				))}
 			</ul>
-			<Input onSubmit={onAddingTask} />
+			<Input onSubmit={onAddingTask} placeholder='Add new Task' />
 		</div>
 	)
 }

@@ -1,6 +1,7 @@
 import Header from './components/Header/Header'
 import TaskList from './containers/TaskList/TaskList'
 import { connect } from 'react-redux'
+import SubTaskList from './containers/SubTaskList/SubTaskList'
 // import * as actions from './store/actions'
 
 function App(props) {
@@ -9,6 +10,7 @@ function App(props) {
 			<Header />
 			<section className='main container grid grid-3 bg-thersary'>
 				<TaskList />
+				<SubTaskList />
 			</section>
 		</div>
 	)
