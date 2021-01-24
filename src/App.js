@@ -1,21 +1,26 @@
 import Header from './components/Header/Header'
 import TaskList from './containers/TaskList/TaskList'
+import { connect } from 'react-redux'
+import SubTaskList from './containers/SubTaskList/SubTaskList'
+// import * as actions from './store/actions'
 
-function App() {
-	let taskList = [
-		{ name: 'buy food', done: false },
-		{ name: 'Go to dentist', done: false },
-		{ name: 'Fix the Door', done: true },
-	]
-
+function App(props) {
 	return (
 		<div className='App'>
 			<Header />
-			<section class='main container grid grid-3 bg-thersary'>
-			<TaskList list={taskList} />
+			<section className='main container grid grid-3 bg-thersary'>
+				<TaskList />
+				<SubTaskList />
 			</section>
 		</div>
 	)
 }
 
-export default App
+const mapStateToProps = (state) => {
+	return {
+		tasksList: state.tasksList,
+		subTasks: state.subTasks,
+	}
+}
+
+export default connect(mapStateToProps)(App)

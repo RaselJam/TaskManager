@@ -193,6 +193,7 @@ img {
 	margin-top: 10rem;
 	overflow: visible;
 	border-top-left-radius: 15px;
+	height: max-content;
 }
 .main::before {
 	content: '';
@@ -271,6 +272,10 @@ img {
 	border-radius: 15px;
 	position: relative;
 }
+.tasks p {
+	margin: 0;
+	padding: 0.1rem 0;
+}
 .tasks-Ul li .btn {
 	width: 3px;
 	height: 20px;
@@ -331,21 +336,26 @@ img {
 	transform: rotate(45deg);
 	color: green;
 }
-.tasks-Ul li[done='false']::after {
+.tasks-Ul li[done='true'] .doButton {
+	display: none;
+}
+.doButton {
 	position: absolute;
-	content: '';
 	display: block;
 	top: 5px;
 	right: -30px;
-	width: 0.5em;
+	width: 0.6em;
 	height: 1.5em;
+	border: 0;
+	background-color: transparent;
 	margin-right: 0.3em;
 	border-bottom: 2px solid green;
 	border-right: 2px solid green;
-	transform: rotate(45deg);
+	transform: rotate(40deg);
 	color: green;
 	cursor: pointer;
 }
+
 @media (max-width: 700px) {
 	.navbar .showcase {
 		grid-column: 2/-1;
@@ -376,12 +386,14 @@ img {
 	}
 }
 @media (max-width: 750px) {
+	.intruduction {
+		height: auto;
+		width: 100%;
+	}
 	.main {
 		gap: 2px;
 	}
 	.adding {
 		margin-top: 0px;
-	}
-	.tasks ul {
 	}
 }

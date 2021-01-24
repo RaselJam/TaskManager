@@ -1,24 +1,49 @@
-import React from 'react'
-import { v4 as uuidv4 } from 'uuid'
+import React, { useEffect } from 'react'
 import Task from './Task/Task'
+import { connect } from 'react-redux'
+import * as actions from '../../store/actions'
+import Input from '../../UI/Input'
 
 function TaskList(props) {
+	const onAddingTask = (taskName) => {
+		props.onAddTask(taskName)
+	}
+	const handleTaskDone = (id) => {
+		props.onTaskToggleDone(id)
+	}
+	const handleDeleteTask = (id) => {
+		props.onDeleteTask(id)
+	}
+
 	return (
-		<div class='tasks card '>
-			<h3 class='with-pen my-1 bg-light'>Tasks to Do</h3>
-			<ul class='tasks-Ul p-1'>
+		<div className='tasks card '>
+			<h3 className='with-pen my-1 bg-light'>Tasks to Do</h3>
+			<ul className='tasks-Ul p-1'>
 				{props.list.map((task) => (
-					<Task done={task.done} taskName={task.name} key={uuidv4()} />
+					<Task task={task} key={task.id} onSubmit={handleTaskDone} onDelete={handleDeleteTask} />
 				))}
 			</ul>
-			<div class='adding'>
-				<input type='text' placeholder='Add new Task' />
-				<button class='btn btn-thersary' type='button'>
-					Add
-				</button>
-			</div>
+			<Input onSubmit={onAddingTask} placeholder='Add new Task' />
 		</div>
 	)
 }
+const mapDispatchToProps = (dispatch) => {
+	return {
+		onAddTask: (name) => {
+			dispatch(actions.addTaks(name))
+		},
 
-export default TaskList
+		onDeleteTask: (id) => {
+			dispatch(actions.deleteTask(id))
+		},
+		onTaskToggleDone: (id) => {
+			dispatch(actions.toggleDone(id))
+		},
+	}
+}
+const mapStateToProps = (state, ownProps) => {
+	return {
+		list: state.tasksList,
+	}
+}
+export default connect(mapStateToProps, mapDispatchToProps)(TaskList)
