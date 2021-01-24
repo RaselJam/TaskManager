@@ -5,7 +5,7 @@ import { v4 as unicId } from 'uuid'
  *
  * @param {String} name
  */
-export const addTaks = (name) => {
+export const addTasks = (name) => {
 	const task = new Task(unicId(), name, false)
 	return { type: actionType.ADD_TASK, task: task }
 }

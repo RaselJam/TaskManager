@@ -26,7 +26,7 @@ function TaskList(props) {
 const mapDispatchToProps = (dispatch, ownProps) => {
 	return {
 		onAddTask: (name) => {
-			dispatch(actions[ownProps.table].addTasks(name))
+			dispatch(actions[ownProps.table.tableName].addTasks(name))
 		},
 
 		// onDeleteTask: (id) => {
