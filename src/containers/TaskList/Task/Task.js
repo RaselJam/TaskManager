@@ -1,9 +1,6 @@
 import React from 'react'
-import * as actions from '../../../store/actions'
-import { connect } from 'react-redux'
 
 const Task = React.memo((props) => {
-
 	const handleDelte = () => {
 		props.onDelete(props.task.id)
 	}
@@ -12,7 +9,9 @@ const Task = React.memo((props) => {
 		props.onSubmit(props.task.id)
 	}
 	const handleSelected = () => {
-		props.onTaskSelect(props.task.id, props.task.name)
+		if (props.onTaskSelect) {
+			props.onTaskSelect(props.task.id, props.task.name)
+		}
 	}
 	return (
 		<li done={props.task.done.toString()}>
@@ -27,11 +26,4 @@ const Task = React.memo((props) => {
 	)
 })
 
-const mapDispatchToProps = (dispatch) => {
-	return {
-		onTaskSelect: (id, name) => {
-			dispatch(actions.setCurrentTask(id, name))
-		},
-	}
-}
-export default connect(null, mapDispatchToProps)(Task)
+export default Task

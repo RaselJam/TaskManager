@@ -193,7 +193,7 @@ img {
 	margin-top: 10rem;
 	overflow: visible;
 	border-top-left-radius: 15px;
-	height: max-content;
+	min-height: 70vh;
 }
 .main::before {
 	content: '';
@@ -250,9 +250,35 @@ img {
 	border-top-left-radius: 0;
 	border-bottom-left-radius: 0;
 }
+/* Main About */
+.about {
+	background-image: url('../assets/bussy.png');
+	border-radius: 15px;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	flex-direction: column;
+}
+.about h3 {
+	margin-top: 2rem;
+	height: auto;
+	width: auto;
+	padding: 1rem;
+	backdrop-filter: blur(8px);
+	color: rgba(0, 0, 0, 0.5);
+	font-family: var(--font-indie);
+	border-radius: 10px;
+	font-size: 2rem;
+	line-height: 3rem;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+.about h3 span {
+	font-size: 1.5rem;
+	color: var(--primary-color);
+}
 
 /* Task UL */
-.tasks {
+.tasks.card {
 	background: linear-gradient(90deg, rgb(146, 149, 151) 0%, rgb(226, 244, 248) 100%);
 	width: 21rem;
 	height: 60vh;
@@ -290,7 +316,7 @@ img {
 }
 .tasks-Ul li .btn .tooltip {
 	position: absolute;
-	font-size: 0.9rem;
+	font-size: 1.2rem;
 	color: red;
 	transform: rotate(-45deg) translate(30px, -40px);
 

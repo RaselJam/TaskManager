@@ -14,13 +14,14 @@ function TaskList(props) {
 	const handleDeleteTask = (id) => {
 		props.onDeleteTask(id)
 	}
+	
 
 	return (
 		<div className='tasks card '>
 			<h3 className='with-pen my-1 bg-light'>Tasks to Do</h3>
 			<ul className='tasks-Ul p-1'>
 				{props.list.map((task) => (
-					<Task task={task} key={task.id} onSubmit={handleTaskDone} onDelete={handleDeleteTask} />
+					<Task task={task} key={task.id} onSubmit={handleTaskDone} onTaskSelect={()=>props.onTaskSelect(task.id, task.name)} onDelete={handleDeleteTask} />
 				))}
 			</ul>
 			<Input onSubmit={onAddingTask} placeholder='Add new Task' />
@@ -38,6 +39,9 @@ const mapDispatchToProps = (dispatch) => {
 		},
 		onTaskToggleDone: (id) => {
 			dispatch(actions.toggleDone(id))
+		},
+		onTaskSelect: (id, name) => {
+			dispatch(actions.setCurrentTask(id, name))
 		},
 	}
 }

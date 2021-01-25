@@ -1,16 +1,17 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 function Menu() {
 	return (
 		<ul className='menu flex my-1'>
 			<li>
-				<a href='index.html'>Home </a>
+				<NavLink to='/'>Home</NavLink>
 			</li>
 			<li>
-				<a href='index.html'>About</a>
+				<NavLink to='/About'>About</NavLink>
 			</li>
 			<li>
-				<a href='index.html'>Docs</a>
+				<NavLink to='/Docs'>Docs</NavLink>
 			</li>
 		</ul>
 	)
